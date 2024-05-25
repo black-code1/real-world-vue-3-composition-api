@@ -5,6 +5,7 @@ import EventService from '@/services/EventService.js'
 const props = defineProps(['id'])
 
 const event = ref(null)
+const id = computed(() => props.id);
 onMounted(() => {
     EventService
     .getEvent(props.id.value)
@@ -20,6 +21,15 @@ onMounted(() => {
 <template>
     <div v-if="event">
         <h1>{{ event.title }}</h1>
+        <div id="nav">
+          <router-link :to="{ name: 'EventDetails', params: { id } }">Details</router-link>
+        </div>
+        <div id="nav">
+          <router-link :to="{ name: 'EventRegister', params: { id } }">Register</router-link>
+        </div>
+        <div id="nav">
+          <router-link :to="{ name: 'EventEdit', params: { id } }">Edit</router-link>
+        </div>
         <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
         <p>{{ event.description }}</p>
     </div>
