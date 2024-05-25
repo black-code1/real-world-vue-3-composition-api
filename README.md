@@ -62,3 +62,12 @@ npm run lint
 
 - From the route file `props: (route) => ({ showExtra: route.query.e })`
 - From the template `defineProps(['showExtra'])`
+
+## Building pagination
+
+- Modify the EventService API call ta take `perPage` and `page`
+- Parse and set the current `page` from the router using Function Mode
+- Modify EventList.vue to pass on `page` number to EventService API
+- Add Pagination links to the EventList Template
+- Only show the Next page link when there is a Next page
+- Improve the pagination styling
